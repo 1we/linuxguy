@@ -1,0 +1,239 @@
+------------Credits to TLDP.org @awebhacker and Linux ninja's ---------------
+ 
+/bin       Essential command binaries
+       /boot      Static files of the boot loader
+       /dev       Device files
+       /etc       Host-specific system configuration
+       /lib       Essential shared libraries and kernel modules
+       /media     Mount point for removeable media
+       /mnt       Mount point for mounting a filesystem temporarily
+       /opt       Add-on application software packages
+       /sbin      Essential system binaries
+       /srv       Data for services provided by this system
+       /tmp       Temporary files
+       /usr       Secondary hierarchy
+       /var       Variable data
+
+bin/ dev/ home/ lost+found/ proc/ sbin/ usr/ cdrom/ opt/ vmlinuz boot/ etc/ lib/ mnt/ root/ tmp/ var/ dvd/ floppy/ initrd/ /tftpboot
+
+
+-----------------/bin------------------
+cat      Utility to concatenate files to standard output
+chgrp    Utility to change file group ownership
+chmod    Utility to change file access permissions
+chown    Utility to change file owner and group
+cp       Utility to copy files and directories
+date     Utility to print or set the system data and time
+dd       Utility to convert and copy a file
+df       Utility to report filesystem disk space usage
+dmesg    Utility to print or control the kernel message buffer
+echo     Utility to display a line of text
+false    Utility to do nothing, unsuccessfully
+hostname Utility to show or set the system's host name
+kill     Utility to send signals to processes
+ln       Utility to make links between files
+login    Utility to begin a session on the system
+ls       Utility to list directory contents
+mkdir    Utility to make directories
+mknod    Utility to make block or character special files
+more     Utility to page through text
+mount    Utility to mount a filesystem
+mv       Utility to move/rename files
+ps       Utility to report process status
+pwd      Utility to print name of current working directory
+rm       Utility to remove files or directories
+rmdir    Utility to remove empty directories
+sed      The `sed' stream editor
+sh       The Bourne command shell
+stty     Utility to change and print terminal line settings
+su       Utility to change user ID
+sync     Utility to flush filesystem buffers
+true     Utility to do nothing, successfully
+umount   Utility to unmount file systems
+uname    Utility to print system information
+
+/boot
+Gurb or LILO
+/boot/grub
+distributions it is actually a symbolic link to one of four files /boot/boot-bmp.b, /boot/boot-menu.b, /boot/boot-text.b, /boot/boot-compat.b which allow a user to change the boot-up schema so that it utilises a splash screen, a 
+/boot/chain.b
+/boot/config-kernel-version
+/boot/map	--Contains the location of the kernel.
+/boot/grub/device.map	--Maps devices in /dev to those used by grub. For example, (/dev/fd0) is represented by /dev/fd0 and (hd0, 4) is referenced by /dev/hda5.
+/boot/grub/grub.conf, /boot/grub/menu.lst	--Grub configuration file.
+/boot/grub/messages 	--Grub boot-up welcome message.
+/boot/grub/splash.xpm.gz	--Grub boot-up background image.
+
+/dev
+# ls -l /dev/hd*
+# mknod ttyS0 c 4 64
+--If is possible that /dev may also contain a MAKEDEV.local for the creation of any local device files.
+#devfs 
+
+
+/etc
+/etc/X11/			--conf's of Xwindowsystem(symbolic inks)
+/etc/X11/XF86Config
+/etc/X11/XF86Config-4
+
+### BEGIN DEBCONF SECTION
+fonts,drivers info and custmzble options
+# XF86Config or XF86Config-4 file?" in /usr/share/doc/xfree86-
+### END DEBCONF SECTION
+/etc/X11/Xmodmap
+/etc/X11/gdm/gdm.conf
+/etc/X11/fonts
+/etc/X11/fs/config
+/etc/X11/xinit/
+/etc/adduser.conf
+/etc/adjtime
+/etc/aliases
+/etc/alternatives
+/etc/apt
+/etc/apt/sources.list
+/etc/at.deny
+/etc/autoconf
+/etc/bash.bashrc		--System wide functions and aliases' file for interactive bash shells.
+/etc/bash_completion
+/etc/chatscripts/provider
+/etc/cron.d, /etc/cron.daily, /etc/cron.weekly, /etc/cron.monthly
+/etc/crontab
+/etc/csh.login	--System-wide .login file for csh(1). This file is sourced on all invocations of the shell. It contains commands that are to be executed upon login and sometimes aliases also.
+/etc/deluser.conf
+/etc/dict.conf
+/etc/ftpaccess
+/etc/ftpchroot
+/etc/ftpuser	--List of disallowed ftp users.
+/etc/gettydefs
+/etc/group-
+/etc/identd.conf
+/etc/modules	--List of modules to be loaded at startup.
+/etc/modules.conf
+/etc/networks
+/etc/mtab	--List of currently mounted filesystems. Initially set up by the bootup scripts, and updated automatically by the mount command. Used when a list of mounted filesystems is needed, e.g., by the df command. This file is sometimes a symbolic link to /proc/mounts.
+/etc/networks	--List of networks that the system is currently located on. For example, 192.168.0.0.
+/etc/nsswitch.conf	--System Database/Name Service Switch configuration file.
+/etc/passwd
+/etc/profile.d	Shells scripts to be executed upon login to the Bourne or C shells. These scripts are normally called from the /etc/profile file.
+/etc/reportbug.conf
+/etc/rc.boot or /etc/rc?.d	--These directories contain all the files necessary to control system services and configure runlevels. A skeleton file is provided in /etc/init.d/skeleton
+/etc/resolv.conf	--configuration of how DNS is to occur is defined in this file
+/etc/shells
+	# /etc/shells: valid login shells
+  /bin/ash
+  /bin/bash
+  /bin/csh
+  /bin/sh
+  /usr/bin/es
+  /usr/bin/ksh 
+  /bin/ksh
+  /usr/bin/rc
+  /usr/bin/tcsh
+  /bin/tcsh
+  /usr/bin/zsh
+  /bin/sash
+  /bin/zsh
+  /usr/bin/esh
+
+--/etc/skel/
+/etc/sysconfig/
+/etc/syslog.conf
+/etc/updatedb.conf
+
+/home
+/lib
+--filename extension of *.so. Windows equivalent to a shared library would be a DLL
+/lib/'machine-architecture'
+/lib/iptables
+/lib/kbd
+/lib/modules/'kernel-version'
+/lib/modules/'kernel-version'/modules.dep
+/lib/oss
+$ mount /dev/hda2 /home 
+$ mount /dev/hda3 /usr
+$ umount /dev/hda2
+$ umount /usr
+
+
+
+/opt
+/opt/'package' or /opt/'provider'  ==own directory tree C:\Windows\Progam Files\"Program Name"), where 'package'
+
+/proc
+/proc is very special in that it is also a virtual filesystem. It's sometimes referred to as a process information pseudo-file system.
+(e.g. system memory, devices mounted, hardware configuration, etc). 
+# ps ax | grep sshd
+/proc/PID/cmdline
+/proc/PID/cpu
+/proc/PID/environ
+/proc/PID/exe
+/proc/PID/fd
+/proc/PID/root
+# cat interrupts
+
+# /usr/bin/procinfo
+/proc/interrupts
+/proc/ide/ide?/model/settings
+/proc/ksyms		--Kernel symbol table.
+/proc/net/tcp6
+/proc/sys/kernel
+/proc/sys/kernel/ctrl-alt-del
+/proc/sys/kernel/default_console_loglevel
+icmp_echo_ignore_all and icmp_echo_ignore_broadcasts
+/proc/sys/net/ipv4/conf
+/proc/tty
+/proc/uptime
+
+
+/root
+/sbin
+/sbin should contain only binaries essential for booting, restoring,
+  recovering, and/or repairing the system in addition to the binaries
+  in /bin. 
+The latter reside either here or - the less important ones - in /usr/sbin. Locally installed system administration programs should be placed into /usr/local/sbin.
+or symbolic links to files, must be in /sbin 
+fastboot   Reboot the system without checking the disks (optional)
+       fasthalt   Stop the system without checking the disks (optional)
+       fdisk      Partition table manipulator (optional)
+       fsck       File system check and repair utility (optional)
+       fsck.*     File system check and repair utility for a specific filesystem (optional)
+       getty      The getty program (optional)
+       halt       Command to stop the system (optional)
+       ifconfig   Configure a network interface (optional)
+       init       Initial process (optional)
+       mkfs       Command to build a filesystem (optional)
+       mkfs.*     Command to build a specific filesystem (optional)
+       mkswap     Command to set up a swap area (optional)
+       reboot     Command to reboot the system (optional)
+       route      IP routing table utility (optional)
+       swapon     Enable paging and swapping (optional)
+       swapoff    Disable paging and swapping (optional)
+       update     Daemon to periodically flush filesystem buffers (optional)
+/
+
+/usr/X11R6
+/usr/bin			--vi,gcc,firefox
+/usr/etc			--Theoretically, that's another directory for configuration files. Virtually unused now.
+/usr/include/'package-name'
+/usr/lib
+/usr/local
+/usr/sbin --This directory contains programs for administering a system, meant to be run by 'root'. Like '/sbin', it's not part of a user's $PATH. Examples of included binaries here are chroot, useradd, in.tftpd and pppconfig.
+/usr/src
+/usr/src/linux/.config --The last kernel source configuration. This file is normally created through the 'make config', 'make menuconfig' or 'make xconfig' steps during kernel compilation.
+/usr/tmp
+/usr/src/linux/REPORTING-BUGS
+
+/var
+var/log, /var/lock, and /var/run,/var/mail, /var/cache/man, /var/cache/fonts, and /var/spool/news
+note:'Mountable' directories are: '/home', '/mnt', '/tmp', '/usr' and '/var'. Essential for booting are: '/bin', '/boot', '/dev', '/etc', '/lib', '/proc' and '/sbin'.
+
+/var/backups	--backups of  files such as /etc/shadow, /etc/group, /etc/inetd.conf and dpkg.status. They are normally renamed to something like dpkg.status.0, group.bak, gshadow.bak, inetd.conf.bak, passwd.bak, shadow.bak :)
+/var/cache/'package-name'
+/var/crash
+/var/db
+/var/log
+/var/log/auth.log
+/var/log/btmp
+/var/log/debug
+/var/mail
+/var/mail/'username' 	--(Note that /var/mail may be a symbolic link to another directory)
