@@ -1,0 +1,317 @@
+------------Credits to TLDP.org @awebhacker and Linux ninja's ---------------
+
+ “init=/bin/sh” to your system before you boot up.
+
+#cat file1.txt file2.txt | less
+#ls /home/user | tee my_directories.txt
+#make &> /dev/null
+#command_1 `command_2 -options` --This will execute “command_2” and it's output will become the input to “command_1”.
+#command_1 $(command_2) --This will execute “command_2” and it's output will become the input to “command_1”.
+#less $cat file1.txt file2.txt
+#cat file1.txt file2.txt | less
+#command1 && command2 --Executing the second command only if the first is successful
+#command1 || command2 --Executing the second command only if the first fails
+#command1; command2 --To execute commands sequentially regardless of the success/failure of the previous
+#ls -options
+#ls -d string*
+#tree -option(s) /optional/directory/to/list
+#find / -name file --CasesEnSetiVe
+#find / -name '*.doc' -exec cp '{}' /tmp/ ';'
+#find / -path '/mnt/win_c' -prune -o -name "string" -print
+#slocate stringashok  	-- replacement for locate, 
+#whereis program_name 	--whereis locates the binary, source, and manual page for a particular program, CS
+#which program_name  -- It only looks in the PATH (environment variable) of a users shell.
+#mkdir -p /home/matt/work/maths
+#rm -options file_or_folder
+#rmdir directory
+#mv filename1 filename2
+#mv original_file_or_folder new_location
+#mv /etc/configuration.txt /home/joe/backupconfig
+#cp -options file_or_files new_location
+#cp file1 file2
+#cp /tmp/file1 ~/file2 /mnt/win_c
+#cp -R directory_and_or_files new_location
+#ln target_name link_name 
+#ln -s target_name link_name
+#shred -n 2 -z -v /dev/hda1
+#du -options file_directory_or_files
+#du -hs *
+#stat file
+#dd if=/dev/xxx of=/dev/xxx bs=xxxx count=x 
+#touch -d '5 May 2000' some_file.txt
+#split -options file --Use the -b xx option to split into xx bytes, also try -k for kilobytes, and -m for megabytes
+
+---MMV (Mass Move Copy)---
+
+#mmv \*.JPG \#1.jpg 
+#rename 's/\.JPG$/.jpg/' *.JPG 
+
+for i in *.JPG; 
+do mv $i `basename $i JPG`jpg; 
+done 
+
+/*
+for i in *.JPG; 
+do mv $i ${i%%.JPG}.jpg; 
+done
+*/
+
+#time program_name options
+#cat /proc/cpuinfo		--The files under the /proc (process information pseudo file-system) show various information about the system.
+#less /proc/modules 
+#dmesg
+#df -options /dev/hdx	--Displays information about the space on mounted file-systems. Use the -h option to have df list the space in a 'human readable' format.
+#who
+#w		-s -p -n -m -a
+#users
+#last
+#lastlog
+#whoami
+#free -tm 	--Displays memory statistics (total, free, used, cached, swap) -m for megabytes
+#uname -options
+
+#ls | xargs grep work		--file_name: results_of_grep 
+#grep 'word' *
+#ls dir1 | xargs -i mv dir1/'{}' dir2/'{}'
+#\ls *.wav | xargs -i lame -h '{}' '{}'.mp3  	--hell it converts wav to mp3
+
+#date -s hh:mm:ss
+#date --date="3 months 1 day ago"
+#date -d "3 days"
+
+#cal -y year
+#cal 2 2015
+
+Partitions info
+
+#cd /proc/ide0/hda 		--/proc/ide/ or /proc/ide?/hd?
+#fdisk -l  --to list mdiae mount
+
+#eject /dev/cdrom
+
+-- mount partitions its not very hard to change this, simply edit the /etc/fstab file (as root) 
+#umount 
+
+#smbmount //wincomp/c /mnt/win
+#smbumount /mountpoint
+#mount -t ext2 /dev/fd0 /mnt/floppy
+#mount -t iso /tmp/image_file /mnt/iso_file/ -o loop
+--could be “/mnt/floppy” or “/mnt/cdrom”
+
+#shutdown now
+#shutdown -h now "Warning system malfunction, self-destruct imminent"
+#shutdown -h 11:50
+#shutdown -r now
+#shutdown -r now "Warning system rebooting, all files will be destroyed"
+
+
+can edit the /etc/inittab 
+To disable CTRL-ALT-DEL from rebooting your computer 
+
+# Trap 
+CTRL-ALT-DEL
+
+ca::ctrlaltdel:/sbin/shutdown -t3 -r now 
+
+
+#ps
+#ps -aux
+#pstree -p
+#pgrep
+
+#kill $(pgrep mozella)
+#pgrep -l process_name
+
+#kill pid
+#kill -kill pid
+#killall -iv mozilla
+#pkill process_name
+#pkill -u fred anon process_name
+#skill -STOP abusive_user_name
+#skill -CONT abusive_user_name
+
+#bg job_number
+#bg job_name
+
+#fg job_name
+#fg job_number
+
+#nice -20 make --prirority of prs
+#renice +20 2222  	-t -v -c -p -u -i
+#snice -10 -u root		--This would increase the priority of all root's processes.
+
+------daemons------
+
+#service -f sshd		--Use the -f option followed by a service name to restart that particular service.
+#service -R 		-- to restart all services
+#service -s
+
+-----UG-------------
+
+#chsh --list-shells
+#chfn user_name
+#passwd username
+
+--
+Some examples are zcat, zless, zmore, zgrep, zcmp, zdiff.
+#tac filepart1 filepart2 filepart3 > wholefile.txt
+#cat filepart1 filepart2 filepart3 > wholefile.txt
+#cat file.txt | more
+#more filename.txt
+#tail -n 20 somelog.txt
+#head -n 20 somelog.txt
+#wc -option file.txt
+#style -options text_file
+#diff file1.txt file2.txt
+#cmp file1.txt file2.txt
+#sdiff file.xd file2.xd
+#comm file1 file2 --Compares two files, line-by-line and prints lines that are unique to file1 (1st column), unique to file2 (2nd column) and common to both files (3rd column).
+#look string
+#sort -r shoppinglist.txt
+#cat shoppinglist.txt | sort
+#sort -t : -k 4 -k 1 -g /etc/passwd | more 
+#join file1 file2
+#cut -d ':' (and probably some more options here) /etc/passwd
+#cut -d ',' -f 1 /etc/passwd 
+#cut -d ':' -f 1,7 /etc/passwd
+#cut -c 1-50 file1.txt
+#cut -5, 20-, 8 file2.txt
+
+#aspell -c FILE.txt
+#ispell FILE.txt
+#cat fileName.txt | tr '[A-Z]' '[a-z]'  > newFileName.txt   ----- to UCletters to LClatters bam
+#cat fileName.txt | tr '[a-z]' '[A-Z]' > newFileName.txt
+#fmt -u myessay.txt
+#paste file1.txt file2.txt
+#paste --serial file1.txt file2.txt
+#expand file_name.txt
+#unexpand file_name.txt
+#uniq -cd phone_list.txt  		-u -d -c
+#uniq -cd phone_list.txt --This would display any duplicate entries only and a count of the number of times that entry has appeared.
+#cat some_file | tr '3' '5' > new_file
+#cat some_file | tr '[A-Z]' '[a-z]' > new_file
+#nl some_text_file.txt
+#grep some_string some_file | nl
+#$ perl -pi -e "s/oldstring/newstring/g;" filespec [RET]
+#$ perl -pi -e "s/helpless/helpful/g;" * [RET]
+
+#dos2unix file.txt
+#fromdos file.txt
+#unix2dos file.txt
+#todos file.txt
+#antiword file.doc  		--This filter converts Microsoft word documents into plain ASCII text documents.
+
+Recode
+#recode ..pc file_name
+#recode ..pc/ file_name
+#recode ..pc < file_name > recoded_file
+#tr -d '\r' < inputFile.txt > outputFile.txt
+
+#enscript --language=html input_file.txt -o output_file.html
+#enscript --help-highlight
+#enscript -E --color --language=html --toc --output=foo.html *.h *.c 
+#figlet
+
+#grep this_word this_file.txt 
+#grep rpm rpmlist.txt
+#rpm -qa | grep ogg
+#fgrep 'a$*b?' file.txt
+
+---Units--
+#units --verbose
+#numgrep
+
+--N/W---
+#netstat
+#tcpdump
+#ping
+-- ping/smbmount/ssh 
+#192.168.1.100 new --its add to/etc/hosts 
+
+#hostname
+#traceroute
+#traceroute machine_name_or_ip
+#tracepath machine_name_or_ip
+#findsmb
+#nmap
+#nmap machine_name
+#ifconfig
+#ifconfig eth0 down
+#ifup eth0
+#ifdown eth0
+#ifcfg eth0 del 192.168.0.1		--The first command takes eth0 down and removes that stored IP address and the second one brings it back up with the new address.
+#ifcfg eth0 add 192.168.0.2
+#route add default gw some_computer
+#host ip_address
+#host domain_name
+#dig www.amazon.com
+#dig -x 100.42.30.95
+#wget url_for_file
+#wget --spider --force-html -i bookmarks.html
+#wget -r -l1 --no-parent -A.gif http://www.website.com
+#curl -M
+#curl -u username:password http://www.placetodownload/file
+#curl -T file_name ftp://ftp.uploadsite.com
+#curl -C - -o file http://www.site.com
+
+#ssh hostname
+#ssh username@hostname 
+#scp machineToBeCopiedFrom machineToBeCopiedTo
+#scp * new:/
+#scp -r hp166:/tmp new:/tmp
+#scp -r root@hp166:/tmp anon@new:/tmp
+#scp remoteMachine:/mystuff/* .
+
+#umask 027
+#md5sum file_name	--“ md5sum -c” option to check against a given file (often with a “.asc” extention) 
+#mkpasswd -l 10
+#lsattr
+#chmod
+#chmod u+s file_name
+#tar -cvpf name_of_file.tar files_to_be_backed_up
+#tar -zxvpf my_tar_file.tar.gz
+#gzip your_tar_file.tar
+#zipinfo zip_file.zip
+
+'at' executes a command once on a particular day, at a particular time. at will add a particular command to be executed.
+
+#at 21:30
+#at -f shell_script now + 1 hour
+#at now + time
+#atq
+#atrm job_no
+#5 4 * * sun echo "run at 5 after 4 every sunday"
+
+#$ chcase -x 's/htm/html/' '*.htm'
+#man 7 units
+#fortune		--crazy
+#rpm -V textutils
+
+--Checking HD Errors
+#fsck.file_system_type
+#fsck.ext3
+#fsck -t file_system_type
+
+--Dup Disk--
+$ dd if=/dev/fd0 of=floppy-image
+$ dd if=floppy-image of=/dev/fd0 
+#ls -l | grep '[[:upper:]][[:digit:]]'
+
+
+#info coreutils
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
